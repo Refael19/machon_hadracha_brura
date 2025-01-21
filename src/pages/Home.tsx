@@ -1,10 +1,12 @@
 
 const Home = () => {
   return (
-    <div>
-      <h1 className='text-blue-500 mt-[100px] text-center text-5xl'>Welcome to "Machon hadracha brura"</h1>
-    </div>
-  )
-}
+    <>
+      <h1 className="text-blue-500 text-center text-5xl">
+        ברוכים הבאים למכון הדרכה ברורה
+      </h1>
+    </>
+  );
+};
 
-export default Home
+export default Home;

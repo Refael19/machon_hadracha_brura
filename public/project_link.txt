@@ -1,2 +1,6 @@
 
+netlify:
 https://machon-hadracha-brura.netlify.app/
+
+github:
+https://github.com/Refael19/machon_hadracha_brura.git
