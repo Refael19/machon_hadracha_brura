@@ -11,7 +11,9 @@ const Layout = () => {
         <Header />
         <div className={`flex`}>
           <Nav />
+          <div className="mx-[10%] my-[20px]">
           <Outlet />
+          </div>
         </div>
         <Footer />
       </div>

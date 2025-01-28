@@ -1,24 +1,20 @@
-import { useState } from "react";
+import { useAtom } from "jotai";
 import { NavLink } from "react-router-dom";
+import { isMenuOpenAtom } from "../context/atoms";
 
 const Nav = () => {
-  // statics
-  const [isMenuOpen,setIsMenuOpen] = useState(true);
-
-  // functions
-  const toogleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+  const [isMenuOpen,setIsMenuOpen] = useAtom(isMenuOpenAtom);
 
   return (
-    <nav className={`relative bg-blue-300 ${isMenuOpen? "w-[30%]":"w-[0%]"}`}>
+    <nav className={`relative bg-blue-300`} style={{width: isMenuOpen? "30%":"0%"}}>
       <button
-        onClick={toogleMenu}
-        className={`absolute w-[30px] ${isMenuOpen? "m-[100%]":"m-[0%]"} mt-0`}
+        onClick={()=>{setIsMenuOpen((prev) => !prev)}}
+        className={`absolute w-[30px] mt-0`}
+        style={{marginRight:isMenuOpen? "100%":"0%"}}
       >
         <img src="src\assets\icons\icons8-menu-48.png" alt="" />
       </button>
-      <div className={`flex flex-col mx-5 text-center ${isMenuOpen? "":"hidden"}`}>
+      <div className={`flex flex-col mx-5 text-center`} style={{display:isMenuOpen? "":"none"}}>
         <NavLink
           to={"/"}
           className={({ isActive }) => (isActive ? "font-bold" : "")}
@@ -36,6 +32,12 @@ const Nav = () => {
           className={({ isActive }) => (isActive ? "font-bold" : "")}
         >
           מאמרים
+        </NavLink>
+        <NavLink
+          to={"/management"}
+          className={({ isActive }) => (isActive ? "font-bold" : "")}
+        >
+          ניהול
         </NavLink>
       </div>
     </nav>
