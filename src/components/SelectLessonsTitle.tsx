@@ -1,37 +1,41 @@
 import { useAtom } from "jotai";
-import lessonsJson from "../JSON/lessons.json";
 import { Lesson } from "../context/types";
 import { lessonsDisplayAtom } from "../context/atoms";
-import { useRef } from "react";
+import { getLessonsLocalStorage } from "../functions/getLessonsLocalStorage";
+import { useEffect, useState } from "react";
 
 const SelectLessonsTitle = () => {
-  const lessons: Lesson[] = lessonsJson;
-  const SelectTitleValue = useRef<string>("allLessons");
-  const [, setLessonsDisplayAtom] = useAtom<Lesson[]>(lessonsDisplayAtom);
+  const lessons: Lesson[] = getLessonsLocalStorage();
+  const [selectTitleValue, setSelectTitleValue] = useState("allLessons");
+  const [, setLessonsDisplay] = useAtom<Lesson[]>(lessonsDisplayAtom);
 
   const lessonsTitles: string[] = [];
-  for (let lesson of lessons) {
-    if (!lessonsTitles.includes(lesson.lessonTitle)) {
-      lessonsTitles.push(lesson.lessonTitle);
+  for (const lesson of lessons) {
+    if (!lessonsTitles.includes(lesson.title)) {
+      lessonsTitles.push(lesson.title);
     }
   }
 
   const filterByTitle = () => {
-    if (SelectTitleValue.current === "allLessons") return lessons;
+    if (selectTitleValue === "allLessons") return lessons;
     return lessons.filter((lesson) => {
-      return SelectTitleValue.current === lesson.lessonTitle;
+      return selectTitleValue === lesson.title;
     });
   };
+
+  useEffect(() => {
+    setLessonsDisplay(filterByTitle());
+  }, [selectTitleValue]);
+
   return (
-    <div>
+    <div className="flex gap-2 justify-center">
       <select
         name="lessonsTitle"
         id="lessonsTitle"
         onChange={(e) => {
-          SelectTitleValue.current = e.target.value;
-          setLessonsDisplayAtom(filterByTitle());
+          setSelectTitleValue(e.target.value);
         }}
-        className="bg-blue-200 rounded-2xl p-1 px-2"
+        className="bg-my-topic rounded-2xl p-1 px-2"
       >
         <option value="allLessons">כל הנושאים</option>
         {lessonsTitles.map((title: string) => (
@@ -40,14 +44,6 @@ const SelectLessonsTitle = () => {
           </option>
         ))}
       </select>
-      <button
-        onClick={() => {
-          setLessonsDisplayAtom(filterByTitle());
-        }}
-        className="bg-blue-200 rounded-2xl p-1 px-2"
-      >
-        הצג
-      </button>
     </div>
   );
 };

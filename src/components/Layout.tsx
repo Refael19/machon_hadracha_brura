@@ -7,11 +7,11 @@ const Layout = () => {
 
   return (
     <div>
-      <div className="grid grid-rows-[30px_1fr_100px] h-screen">
+      <div className="grid grid-rows-[50px_1fr_100px] h-screen">
         <Header />
-        <div className={`flex`}>
+        <div className="flex">
           <Nav />
-          <div className="mx-[10%] my-[20px]">
+          <div className="py-[20px] px-[40px] h-full w-full bg-my-body">
           <Outlet />
           </div>
         </div>

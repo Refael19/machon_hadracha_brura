@@ -1,17 +1,21 @@
-export type Lesson = {
-  lessonID: number;
-  lessonTitle: string;
-  lessonName: string;
-  lessonSrc: string;
-  lessonSummary?: string;
-  lessonSuorces?: string;
+export type LessonBasic = {
+  title: string;
+  name: string;
 };
+export type LessonForm = LessonBasic & {
+  src: string;
+  summary: string | undefined;
+  sources: string | undefined;
+};
+export type Lesson = LessonForm & { id: string };
 
-export type User = {
-  userID: number;
-  userFirstName: string;
-  userLastName: string;
-  userEmail: string;
-  userPassword: string;
+export type UserForm = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
+export type User = UserForm & {
+  id: number;
   role: string;
 };

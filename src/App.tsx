@@ -4,7 +4,7 @@ import Lessons from "./pages/Lessons";
 import Articles from "./pages/Articles";
 import Layout from "./components/Layout";
 import Management from "./pages/management/Management";
-import Login from "./pages/Login";
+import Login from "./pages/login/Login";
 
 function App() {
   return (

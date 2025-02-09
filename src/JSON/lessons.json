@@ -1,26 +1,34 @@
 [
   {
-    "lessonTitle": "1שלום בית",
-    "lessonID": 1,
-    "lessonName": "1המילון והשפה הגברית והנשית",
-    "lessonSrc": "https://www.youtube.com/embed/SiSCyTnZ0Vc"
+    "title": "1שלום בית",
+    "id": 1,
+    "name": "1המילון והשפה הגברית והנשית",
+    "src": "https://www.youtube.com/embed/SiSCyTnZ0Vc",
+    "summary": "",
+    "sources": ""
   },
   {
-    "lessonTitle": "2שלום בית",
-    "lessonID": 2,
-    "lessonName": "שיעור",
-    "lessonSrc": "https://www.youtube.com/embed/SiSCyTnZ0Vc"
+    "title": "2שלום בית",
+    "id": "2",
+    "name": "שיעור",
+    "src": "https://www.youtube.com/embed/SiSCyTnZ0Vc",
+    "summary": "",
+    "sources": ""
   },
   {
-    "lessonTitle": "3שלום בית",
-    "lessonID": 3,
-    "lessonName": "3המילון והשפה הגברית והנשית",
-    "lessonSrc": "https://www.youtube.com/embed/SiSCyTnZ0Vc"
+    "title": "3שלום בית",
+    "id": "3",
+    "name": "3המילון והשפה הגברית והנשית",
+    "src": "https://www.youtube.com/embed/SiSCyTnZ0Vc",
+    "summary": "",
+    "sources": ""
   },
   {
-    "lessonTitle": "4שלום בית",
-    "lessonID": 4,
-    "lessonName": "4המילון והשפה הגברית והנשית",
-    "lessonSrc": "https://www.youtube.com/embed/SiSCyTnZ0Vc"
+    "title": "4שלום בית",
+    "id": "4",
+    "name": "4המילון והשפה הגברית והנשית",
+    "src": "https://www.youtube.com/embed/SiSCyTnZ0Vc",
+    "summary": "",
+    "sources": ""
   }
 ]

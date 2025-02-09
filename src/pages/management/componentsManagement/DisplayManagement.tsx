@@ -25,7 +25,7 @@ const DisplayManagement = () => {
         }
       };
   return (
-    <div>
+    <div className="">
       {displayComponent()}
     </div>
   )

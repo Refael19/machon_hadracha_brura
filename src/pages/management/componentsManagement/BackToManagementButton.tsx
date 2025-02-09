@@ -7,7 +7,7 @@ const BackToManagementButton = () => {
   return (
     <button
       onClick={() => setDisplayManagement(() => "menuManagement")}
-      className="bg-blue-400 rounded-2xl p-1 px-2"
+      className="bg-my-topic rounded-2xl p-1 px-2"
     >
       חזרה לניהול
     </button>

@@ -6,23 +6,23 @@ const MenuManagement = () => {
     displayManagementAtom
   );
   return (
-    <div className="bg-blue-200 rounded-2xl p-3 flex flex-col gap-2">
+    <div className="bg-my-header rounded-2xl p-3 flex flex-col gap-2">
       <h2>שיעורים</h2>
       <button
         onClick={() => setDisplayManagement("addLesson")}
-        className="bg-blue-300 rounded-2xl p-2"
+        className="bg-my-topic rounded-2xl p-2"
       >
         הוסף שיעור
       </button>
       <button
         onClick={() => setDisplayManagement("editLesson")}
-        className="bg-blue-300 rounded-2xl p-2"
+        className="bg-my-topic rounded-2xl p-2"
       >
         ערוך שיעור
       </button>
       <button
         onClick={() => setDisplayManagement("deleteLesson")}
-        className="bg-blue-300 rounded-2xl p-2"
+        className="bg-my-topic rounded-2xl p-2"
       >
         מחק שיעור
       </button>

@@ -1,14 +1,14 @@
 import { useAtom } from "jotai";
-import Login from "../pages/Login";
 import { isMenuOpenAtom } from "../context/atoms";
+import Login from "../pages/login/Login";
 
 const Header = () => {
     const [isMenuOpen] = useAtom(isMenuOpenAtom);
   
   return (
-    <div className="flex">
+    <div className="flex bg-my-header">
       <Login />
-      <header className={`bg-green-300 text-center ${isMenuOpen?"w-[70%]":"w-[100%]"}`} >
+      <header className={`text-center my-auto ${isMenuOpen?"w-[70%]":"w-[100%]"}`} >
         header
       </header>
     </div>
