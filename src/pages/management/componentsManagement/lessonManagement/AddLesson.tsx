@@ -4,6 +4,7 @@ import { Lesson, LessonForm } from "../../../../context/types";
 import { v4 as uniqueID } from "uuid";
 import { setAddLessonLocalStorage } from "../../../../functions/setLessonLocalStorage";
 import { getLessonsLocalStorage } from "../../../../functions/getLessonsLocalStorage";
+import { extractYouTubeID } from "../../../../functions/extractYouTubeID";
 
 const AddLesson = () => {
   const lessons = getLessonsLocalStorage();
@@ -18,19 +19,14 @@ const AddLesson = () => {
     return !lessons.some((lesson) => lesson.name === newLessonName);
   };
 
-  function extractYouTubeID(url: string) {
-    const regex =
-      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-    const match = url.match(regex);
-    return match ? match[1] : null;
-  }
+
   const onSubmit = (lesson: LessonForm): void => {
     let inputSrc: string | null = extractYouTubeID(lesson.src);
-    let src: string = `https://www.youtube.com/embed/${inputSrc}`;
+    let link: string = `https://www.youtube.com/embed/${inputSrc}`;
     const newLesson: Lesson = {
       title: lesson.title,
       name: lesson.name,
-      src: src,
+      src: link,
       summary: lesson.summary,
       sources: lesson.sources,
       id: uniqueID(),

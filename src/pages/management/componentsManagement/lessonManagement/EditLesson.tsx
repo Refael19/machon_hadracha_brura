@@ -4,6 +4,7 @@ import { Lesson, LessonBasic, LessonForm } from "../../../../context/types";
 import { useState } from "react";
 import { setEditLessonLocalStorage } from "../../../../functions/setLessonLocalStorage";
 import { getFoundLesson } from "../../../../functions/getFoundLesson";
+import { extractYouTubeID } from "../../../../functions/extractYouTubeID";
 
 const EditLesson = () => {
   const [isFoundLesson, setIsFoundLesson] = useState<boolean>(false);
@@ -33,20 +34,24 @@ const EditLesson = () => {
   };
 
   const onSubmit = (lesson: LessonForm) => {
-    if (isFoundLesson) {
-      const editLesson: Lesson = {
-        title: lesson.title,
-        name: lesson.name,
-        src: lesson.src,
-        summary: lesson.summary,
-        sources: lesson.sources,
-        id: prevLesson?.id ?? "id",
-      };
-      setEditLessonLocalStorage(editLesson);
-      setPrevLesson(undefined);
-      setIsFoundLesson(false);
-      reset();
-    } else alert("השיעור לא נערך בהצלחה, נסה שוב.");
+    let inputSrc: string | null = extractYouTubeID(lesson.src);
+    let link: string = `https://www.youtube.com/embed/${inputSrc}`;
+    if (inputSrc) {
+      if (isFoundLesson) {
+        const editLesson: Lesson = {
+          title: lesson.title,
+          name: lesson.name,
+          src: link,
+          summary: lesson.summary,
+          sources: lesson.sources,
+          id: prevLesson?.id ?? "id",
+        };
+        setEditLessonLocalStorage(editLesson);
+        setPrevLesson(undefined);
+        setIsFoundLesson(false);
+        reset();
+      } else alert("השיעור לא נערך בהצלחה, נסה שוב.");
+    } else alert("הקישור לא תקין, החלף בקישור תקין ונסה שוב.");
   };
 
   return (
