@@ -9,7 +9,7 @@ const LessonCard = ({ lesson }: { lesson: Lesson }) => {
     <div
       key={lesson.id}
       style={{ padding: isDetailLessonsHidden ? "10px" : "0px" }}
-      className="bg-my-topic rounded-2xl max-w-[90%]"
+      className="bg-my-topic rounded-2xl"
     >
       <iframe
         width="100%"

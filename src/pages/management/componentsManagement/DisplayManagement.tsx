@@ -25,7 +25,7 @@ const DisplayManagement = () => {
         }
       };
   return (
-    <div className="">
+    <div className="w-[250px] text-center">
       {displayComponent()}
     </div>
   )

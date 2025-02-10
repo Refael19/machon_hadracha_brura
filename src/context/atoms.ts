@@ -9,7 +9,9 @@ export const lessonsDisplayAtom = atom<Lesson[]>(getLessonsLocalStorage());
 
 export const displayManagementAtom = atom<string>("");
 
+export const displayComponentAtom = atom<string>("");
+
 export const isMenuOpenAtom = atom<boolean>(true);
 
-export const isDetailLessonsHiddenAtom=atom<boolean>(true)
+export const isDetailLessonsHiddenAtom=atom<boolean>(false)
 

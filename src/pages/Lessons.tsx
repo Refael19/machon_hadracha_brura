@@ -13,6 +13,7 @@ const Lessons = () => {
     isDetailLessonsHiddenAtom
   );
   const [lessonsDisplay] = useAtom(lessonsDisplayAtom);
+
   const detailsLessonsButton = (): void => {
     setIsDetailLessonsHidden((prev) => !prev);
   };
@@ -31,10 +32,10 @@ const Lessons = () => {
             : "הצג את פרטי השיעורים"}
         </button>
       </div>
-      <div className="rounded-2xl p-2 flex gap-2 m-3 justify-center flex-wrap">
-        {lessonsDisplay.map((lesson: Lesson) => (
+      <div className="rounded-2xl text-2xl p-2 flex gap-2 m-3 justify-center flex-wrap">
+        {lessonsDisplay[0]?lessonsDisplay.map((lesson: Lesson) => (
           <LessonCard lesson={lesson} />
-        ))}
+        )):"אין שיעורים להצגה."}
       </div>
     </div>
   );

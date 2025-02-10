@@ -2,8 +2,7 @@ import DisplayManagement from "./componentsManagement/DisplayManagement";
 
 const Management = () => {
   return (
-    <div className="flex flex-col">
-      <h1 className="text-xl">ניהול</h1>
+    <div className="flex flex-wrap gap-5 justify-center mx-[15%] mt-[50px]">
       {<DisplayManagement />}
     </div>
   );

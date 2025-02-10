@@ -18,19 +18,32 @@ const AddLesson = () => {
     return !lessons.some((lesson) => lesson.name === newLessonName);
   };
 
+  function extractYouTubeID(url: string) {
+    const regex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  }
   const onSubmit = (lesson: LessonForm): void => {
+    let inputSrc: string | null = extractYouTubeID(lesson.src);
+    let src: string = `https://www.youtube.com/embed/${inputSrc}`;
     const newLesson: Lesson = {
       title: lesson.title,
       name: lesson.name,
-      src: lesson.src,
+      src: src,
       summary: lesson.summary,
       sources: lesson.sources,
       id: uniqueID(),
     };
-    if (isUniqueNameLessons(newLesson.name)) {
-      setAddLessonLocalStorage(newLesson);
-      reset();
-    }else alert("קיים שיעור עם אותו שם ולכן השיעור לא נוסף בהצלחה, החלף את שם השיעור ונסה שוב.")
+    if (inputSrc) {
+      if (isUniqueNameLessons(newLesson.name)) {
+        setAddLessonLocalStorage(newLesson);
+        reset();
+      } else
+        alert(
+          "קיים שיעור עם אותו שם ולכן השיעור לא נוסף בהצלחה, החלף את שם השיעור ונסה שוב."
+        );
+    }else alert("הקישור לא תקין, החלף בקישור תקין ונסה שוב.")
   };
 
   return (
